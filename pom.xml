@@ -8,5 +8,5 @@
   </parent>
   <groupId>com.dinstone.jbp</groupId>
   <artifactId>jbp-exception</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
 </project>
