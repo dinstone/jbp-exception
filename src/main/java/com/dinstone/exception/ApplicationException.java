@@ -75,11 +75,11 @@ public class ApplicationException extends RuntimeException {
         synchronized (s) {
             s.println(this);
 
-            s.print("\tep ");
             if (errorType != null) {
-                s.print(errorType.getClass().getName() + "." + errorType + ": ");
+                s.print("\tep ");
+                s.print(errorType.getClass().getName() + "." + errorType + " @ ");
+                s.println(properties.toString());
             }
-            s.println(properties.toString());
 
             StackTraceElement[] trace = getStackTrace();
             for (int i = 0; i < trace.length; i++) {

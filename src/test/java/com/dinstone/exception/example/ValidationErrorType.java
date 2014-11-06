@@ -23,13 +23,7 @@ import com.dinstone.exception.ErrorType;
  * @version 1.0.0.2013-1-29
  */
 public enum ValidationErrorType implements ErrorType {
-    VALUE_REQUIRED(201), INVALID_FORMAT(202), VALUE_TOO_SHORT(203), VALUE_TOO_LONGS(204);
-
-    private final int number;
-
-    private ValidationErrorType(int number) {
-        this.number = number;
-    }
+    VALUE_REQUIRED, INVALID_FORMAT, VALUE_TOO_SHORT, VALUE_TOO_LONGS;
 
     public String getCode() {
         return this.getClass().getSimpleName() + "." + name();

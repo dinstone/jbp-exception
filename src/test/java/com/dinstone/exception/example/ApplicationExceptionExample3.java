@@ -34,7 +34,8 @@ public class ApplicationExceptionExample3 {
         System.out.println("et code = " + errorCode.getCode());
         String key = errorCode.getCode();
         ResourceBundle bundle = ResourceBundle.getBundle("exceptions");
-        return bundle.getString(key);
+        String value = bundle.getString(key);
+        return value;
     }
 
 }
