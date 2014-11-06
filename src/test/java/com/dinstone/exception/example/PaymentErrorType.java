@@ -16,9 +16,9 @@
 
 package com.dinstone.exception.example;
 
-import com.dinstone.exception.ErrorType;
+import com.dinstone.exception.ExceptionType;
 
-public enum PaymentErrorType implements ErrorType {
+public enum PaymentErrorType implements ExceptionType {
 
     SERVICE_TIMEOUT, CREDIT_CARD_EXPIRED, AMOUNT_TOO_HIGH, INSUFFICIENT_FUNDS;
 

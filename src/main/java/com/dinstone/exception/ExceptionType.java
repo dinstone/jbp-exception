@@ -17,12 +17,12 @@
 package com.dinstone.exception;
 
 /**
- * Error type abstract.
+ * Exception type abstract.
  * 
  * @author guojinfei
  * @version 1.0.0.2014-8-8
  */
-public interface ErrorType {
+public interface ExceptionType {
 
     public String getCode();
 

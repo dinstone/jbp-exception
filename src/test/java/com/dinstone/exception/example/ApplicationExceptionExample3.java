@@ -18,7 +18,7 @@ package com.dinstone.exception.example;
 
 import java.util.ResourceBundle;
 
-import com.dinstone.exception.ErrorType;
+import com.dinstone.exception.ExceptionType;
 
 public class ApplicationExceptionExample3 {
 
@@ -26,7 +26,7 @@ public class ApplicationExceptionExample3 {
         System.out.println(getUserText(ValidationErrorType.VALUE_TOO_SHORT));
     }
 
-    public static String getUserText(ErrorType errorCode) {
+    public static String getUserText(ExceptionType errorCode) {
         if (errorCode == null) {
             return null;
         }
@@ -34,7 +34,8 @@ public class ApplicationExceptionExample3 {
         System.out.println("et code = " + errorCode.getCode());
         String key = errorCode.getCode();
         ResourceBundle bundle = ResourceBundle.getBundle("exceptions");
-        return bundle.getString(key);
+        String value = bundle.getString(key);
+        return value;
     }
 
 }

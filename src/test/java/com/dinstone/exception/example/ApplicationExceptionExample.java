@@ -30,7 +30,7 @@ public class ApplicationExceptionExample {
             throw new ApplicationException(PaymentErrorType.CREDIT_CARD_EXPIRED);
         } catch (ApplicationException e) {
             e.printStackTrace();
-            if (e.getErrorType() == PaymentErrorType.CREDIT_CARD_EXPIRED) {
+            if (e.getExceptionType() == PaymentErrorType.CREDIT_CARD_EXPIRED) {
                 System.out.println("Credit card expired");
             }
         }

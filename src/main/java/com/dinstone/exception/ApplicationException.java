@@ -27,25 +27,25 @@ public class ApplicationException extends RuntimeException {
 
     private final Map<String, Object> properties = new HashMap<String, Object>();
 
-    private ErrorType errorType;
+    private ExceptionType exceptionType;
 
-    public ApplicationException(ErrorType errorType) {
-        this(errorType, null);
+    public ApplicationException(ExceptionType exceptionType) {
+        this(exceptionType, null);
     }
 
-    public ApplicationException(ErrorType errorType, Throwable cause) {
-        super(errorType == null ? null : errorType.getMessage(), cause);
-        this.errorType = errorType;
+    public ApplicationException(ExceptionType exceptionType, Throwable cause) {
+        super(exceptionType == null ? null : exceptionType.getMessage(), cause);
+        this.exceptionType = exceptionType;
     }
 
     /**
-     * the errorType to get
+     * the exceptionType to get
      * 
-     * @return the errorType
-     * @see ApplicationException#errorType
+     * @return the exceptionType
+     * @see ApplicationException#exceptionType
      */
-    public ErrorType getErrorType() {
-        return errorType;
+    public ExceptionType getExceptionType() {
+        return exceptionType;
     }
 
     /**
@@ -75,11 +75,11 @@ public class ApplicationException extends RuntimeException {
         synchronized (s) {
             s.println(this);
 
-            s.print("\tep ");
-            if (errorType != null) {
-                s.print(errorType.getClass().getName() + "." + errorType + ": ");
+            if (exceptionType != null) {
+                s.print("\tep ");
+                s.print(exceptionType.getClass().getName() + "." + exceptionType + " @ ");
+                s.println(properties.toString());
             }
-            s.println(properties.toString());
 
             StackTraceElement[] trace = getStackTrace();
             for (int i = 0; i < trace.length; i++) {
@@ -95,18 +95,18 @@ public class ApplicationException extends RuntimeException {
     }
 
     public static ApplicationException wrap(Throwable exception) {
-        return wrap(exception, null);
+        return wrap(null, exception);
     }
 
-    public static ApplicationException wrap(Throwable exception, ErrorType errorType) {
+    public static ApplicationException wrap(ExceptionType exceptionType, Throwable exception) {
         if (exception instanceof ApplicationException) {
             ApplicationException ae = (ApplicationException) exception;
-            if (errorType != null && errorType != ae.getErrorType()) {
-                return new ApplicationException(errorType, exception);
+            if (exceptionType != null && exceptionType != ae.getExceptionType()) {
+                return new ApplicationException(exceptionType, exception);
             }
             return ae;
         } else {
-            return new ApplicationException(errorType, exception);
+            return new ApplicationException(exceptionType, exception);
         }
     }
 
