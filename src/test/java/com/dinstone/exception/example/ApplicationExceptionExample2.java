@@ -16,7 +16,7 @@
 
 package com.dinstone.exception.example;
 
-import com.dinstone.exception.ApplicationException;
+import com.dinstone.exception.BusinessException;
 
 public class ApplicationExceptionExample2 {
 
@@ -28,7 +28,7 @@ public class ApplicationExceptionExample2 {
 
     public static void validate(String field, String value) {
         if (value == null || value.length() < MIN_LENGTH) {
-            throw new ApplicationException(ValidationErrorType.VALUE_TOO_SHORT).setProperty("field", field)
+            throw new BusinessException(ValidationErrorType.VALUE_TOO_SHORT).setProperty("field", field)
                 .setProperty("value", value).setProperty("min-length", MIN_LENGTH);
         }
     }

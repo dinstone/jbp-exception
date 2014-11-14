@@ -21,6 +21,12 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * ApplicationException表示应用未按预期执行导致的异常，需要应用框架根据异常类型来处理；
+ *
+ * @author guojinfei
+ * @version 1.0.0
+ */
 public class ApplicationException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
@@ -30,17 +36,25 @@ public class ApplicationException extends RuntimeException {
     private ExceptionType exceptionType;
 
     public ApplicationException(ExceptionType exceptionType) {
-        this(exceptionType, null);
+        this(exceptionType, exceptionType != null ? exceptionType.toString() : null, null);
+    }
+
+    public ApplicationException(ExceptionType exceptionType, String message) {
+        this(exceptionType, message, null);
     }
 
     public ApplicationException(ExceptionType exceptionType, Throwable cause) {
-        super(exceptionType == null ? null : exceptionType.getMessage(), cause);
+        this(exceptionType, exceptionType != null ? exceptionType.toString() : null, cause);
+    }
+
+    public ApplicationException(ExceptionType exceptionType, String message, Throwable cause) {
+        super(message, cause);
         this.exceptionType = exceptionType;
     }
 
     /**
      * the exceptionType to get
-     * 
+     *
      * @return the exceptionType
      * @see ApplicationException#exceptionType
      */
@@ -48,14 +62,8 @@ public class ApplicationException extends RuntimeException {
         return exceptionType;
     }
 
-    /**
-     * the properties to get
-     * 
-     * @return the properties
-     * @see ApplicationException#properties
-     */
-    public Map<String, Object> getProperties() {
-        return properties;
+    public Object getProperty(String name) {
+        return properties.get(name);
     }
 
     public ApplicationException setProperty(String name, Object value) {

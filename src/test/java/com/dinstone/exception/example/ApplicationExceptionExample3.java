@@ -30,9 +30,7 @@ public class ApplicationExceptionExample3 {
         if (errorCode == null) {
             return null;
         }
-        System.out.println("et message = " + errorCode.getMessage());
-        System.out.println("et code = " + errorCode.getCode());
-        String key = errorCode.getCode();
+        String key = errorCode.getClass().getSimpleName() + "." + errorCode.toString();
         ResourceBundle bundle = ResourceBundle.getBundle("exceptions");
         String value = bundle.getString(key);
         return value;

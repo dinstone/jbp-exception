@@ -23,8 +23,4 @@ package com.dinstone.exception;
  * @version 1.0.0.2014-8-8
  */
 public interface ExceptionType {
-
-    public String getCode();
-
-    public String getMessage();
 }

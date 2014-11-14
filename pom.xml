@@ -6,7 +6,6 @@
     <version>1.0.0</version>
     <relativePath>../jbp-parent</relativePath>
   </parent>
-  <groupId>com.dinstone.jbp</groupId>
   <artifactId>jbp-exception</artifactId>
   <version>1.0.1-SNAPSHOT</version>
 </project>

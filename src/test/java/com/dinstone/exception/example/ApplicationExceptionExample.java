@@ -17,31 +17,34 @@
 package com.dinstone.exception.example;
 
 import com.dinstone.exception.ApplicationException;
+import com.dinstone.exception.BusinessException;
 
 public class ApplicationExceptionExample {
 
     public static void main(String[] args) {
-        first();
-        second();
-    }
-
-    private static void first() {
         try {
-            throw new ApplicationException(PaymentErrorType.CREDIT_CARD_EXPIRED);
-        } catch (ApplicationException e) {
+            businessException();
+        } catch (BusinessException e) {
             e.printStackTrace();
             if (e.getExceptionType() == PaymentErrorType.CREDIT_CARD_EXPIRED) {
                 System.out.println("Credit card expired");
             }
         }
-    }
 
-    private static void second() {
         try {
-            throw new ApplicationException(null);
+            applicationException();
         } catch (ApplicationException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void businessException() {
+        throw new BusinessException(PaymentErrorType.CREDIT_CARD_EXPIRED);
+    }
+
+    private static void applicationException() {
+        RuntimeException exception = new RuntimeException();
+        throw BusinessException.wrap(exception);
     }
 
 }
